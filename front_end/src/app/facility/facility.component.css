@@ -1,0 +1,13 @@
+.mat-mdc-table {
+    width: 100%;
+    max-height: 300px;
+    overflow: auto;
+  
+    
+  }
+  
+  .firstheader, .firstcontent {
+    height: 100px;
+    padding-left: 15%;
+      
+  }

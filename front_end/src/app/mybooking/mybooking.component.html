@@ -1,0 +1,22 @@
+<app-header></app-header>
+<p>mybooking works!</p>
+
+<div class="example-card" >
+    <mat-card style="text-align: center;">
+      <mat-card-header>Your Booking Details</mat-card-header>
+      <hr/>
+      <mat-card-content *ngFor="let booking of bookingList">
+      <p align="left" style="padding-left: 10px;">Booking Id: {{booking.id}}</p>
+        
+      <p align="left" style="padding-left: 10px;">Facility: {{booking.facility.name}} </p>
+
+      <p align="left" style="padding-left: 10px;">Booking Date: {{booking.bookingDate}} UTC</p>
+
+      <p align="left" style="padding-left: 10px;">Slot: {{booking.bookingSlot.timing}} </p>
+
+      
+     <hr/>
+      </mat-card-content>
+  
+    </mat-card>
+  </div>

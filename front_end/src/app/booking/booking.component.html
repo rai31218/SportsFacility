@@ -1,0 +1,203 @@
+
+<app-header></app-header>
+<div class="example-card" *ngIf="!nextPage">
+    <mat-card style="text-align: center;">
+      <mat-card-header class="card-header">
+        Enter Player Id
+      </mat-card-header>
+      <mat-card-content style="padding:15px">
+        <form [formGroup]="playerIdForm" (submit)="next()">
+          <div class="example-container">
+
+            <mat-form-field appearance="fill" class="card-content">
+              <mat-label>Player ID</mat-label>
+              <input matInput placeholder="MS-XXX" formControlName="playerid"
+                [ngClass]="{ 'is-invalid': submitted && f2['playerid'].errors }">
+              <mat-error *ngIf="submitted && f2['playerid'].errors">
+                <div *ngIf="f2['playerid'].errors['required']">Player ID required</div>
+                
+              </mat-error>
+            </mat-form-field>
+          </div>       
+          <div><span>{{errorInFetchingPlayerDetails}}</span></div>   
+          <button mat-raised-button color="primary" class="card-content-button">Next</button>
+        </form>
+      </mat-card-content>
+  
+    </mat-card>
+  </div>
+
+<!---->
+
+  <!--Auto Populated Player Details in Booking screen-->
+
+  <div class="example-card-detail" *ngIf="nextPage">
+    <mat-card style="text-align: center;">
+      <mat-card-header>
+        Book Slot
+           
+      </mat-card-header>
+      <mat-card-content style="padding:15px">
+  
+        <form [formGroup]="bookingForm" (submit)="onSubmit()">
+            <div>
+                <input type='hidden' formControlName="playerId" class='form-control'  />
+                  
+
+              </div>  
+          <div class="example-container">
+            <input type=hidden  formControlName="playerId" >
+            <mat-form-field appearance="fill" class="card-content" style="background-color: rgba(82, 81, 81, 0.067);">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="firstName" readonly 
+                [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }">
+                <mat-error *ngIf="submitted && f['firstName'].errors">
+                  <div *ngIf="f['firstName'].errors['required']">First Name is required</div>
+                </mat-error>
+            </mat-form-field>
+  
+            <mat-form-field appearance="fill" class="card-content" style="background-color: rgba(82, 81, 81, 0.067);">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lastName" readonly
+              [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }">
+              <mat-error *ngIf="submitted && f['lastName'].errors">
+                <div *ngIf="f['lastName'].errors['required']">Last Name is required</div>
+              
+              </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="fill" class="card-content" style="background-color: rgba(82, 81, 81, 0.067);">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="pat@example.com" formControlName="email" readonly
+                [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+              <mat-error *ngIf="submitted && f['email'].errors">
+                <div *ngIf="f['email'].errors['required']">Email is required</div>
+                
+              </mat-error>
+            </mat-form-field>
+          </div>
+  
+          <div class="example-container">
+  
+            <mat-form-field appearance="fill" class="card-content" style="background-color: rgba(98, 96, 96, 0.067);">
+              <mat-label>PAN</mat-label>
+              <input matInput formControlName="pan" readonly
+              [ngClass]="{ 'is-invalid': submitted && f['pan'].errors }">
+              <mat-error *ngIf="submitted && f['pan'].errors">
+                <div *ngIf="f['pan'].errors['required']">PAN is required</div>
+      
+              </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="fill" class="card-content" style="background-color: rgba(82, 81, 81, 0.067);">
+              <mat-label>Age</mat-label>
+              <input matInput formControlName="age" readonly
+              [ngClass]="{ 'is-invalid': submitted && f['age'].errors }">
+              <mat-error *ngIf="submitted && f['age'].errors">
+                <div *ngIf="f['age'].errors['required']">Age is required</div>
+             
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="card-content" style="background-color: rgba(82, 81, 81, 0.067);">
+                <mat-label>Contact</mat-label>
+                <input matInput type="number" formControlName="contact" readonly
+                [ngClass]="{ 'is-invalid': submitted && f['contact'].errors }">
+                <mat-error *ngIf="submitted && f['contact'].errors">
+                  <div *ngIf="f['contact'].errors['required']">Contact is required</div>
+                
+                </mat-error>
+              </mat-form-field>
+              
+            
+          </div>
+  
+          <div class="example-container">
+
+  
+            <mat-form-field appearance="fill" class="card-content" formGroupName="address" style="background-color: rgba(82, 81, 81, 0.067);">
+              <mat-label>Address</mat-label>
+              <input matInput formControlName="homeAddress" readonly
+                [ngClass]="{ 'is-invalid': submitted && f1['homeAddress'].errors}">
+                <mat-error *ngIf="submitted && f1['homeAddress'].errors">
+                  <div *ngIf="f1['homeAddress'].errors['required']">Address is required</div>
+                 
+                </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="fill" class="card-content" formGroupName="address" style="background-color: rgba(82, 81, 81, 0.067);">
+              <mat-label>Country</mat-label>
+              <input matInput formControlName="country" readonly
+              [ngClass]="{ 'is-invalid': submitted && f1['country'].errors}">
+              <mat-error *ngIf="submitted && f1['country'].errors">
+                <div *ngIf="f1['country'].errors['required']">Country is required</div>
+    
+              </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="fill" class="card-content" formGroupName="address" style="background-color: rgba(82, 81, 81, 0.067);">
+                <mat-label>State</mat-label>
+                <input matInput formControlName="state" readonly
+                [ngClass]="{ 'is-invalid': submitted && f1['state'].errors}">
+                <mat-error *ngIf="submitted && f1['state'].errors">
+                  <div *ngIf="f1['state'].errors['required']">State is required</div>
+                 
+                </mat-error>
+               
+              </mat-form-field>
+
+
+
+              
+          </div>
+
+          <mat-form-field appearance="fill" class="card-content" >
+            <mat-label>Facility</mat-label>
+            <mat-select formControlName="facility" 
+              [ngClass]="{ 'is-invalid': submitted && f['facility'].errors }" #facility>
+              <mat-option [value]="facility.id"  *ngFor="let facility of facilityList">{{facility.name}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="submitted && f['facility'].errors">
+              <div *ngIf="f['facility'].errors['required']">Facility is required</div>
+              <!-- value="{{facility.id}}-{{facility.name}}" -->
+            </mat-error>
+          </mat-form-field>
+
+          <div class="example-container">
+          <mat-form-field appearance="fill" class="card-content" >
+            <mat-label>Booking Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="bookingDate" 
+              [ngClass]="{ 'is-invalid': submitted && f['bookingDate'].errors }" (dateChange)="onDateChange()">
+            <mat-datepicker-toggle matIconSuffix [for]="picker" ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="submitted && f['bookingDate'].errors">
+              <div *ngIf="f['bookingDate'].errors['required']">Booking Date is required</div>
+           
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="card-content" >
+            <mat-label>Slot</mat-label>
+            <mat-select formControlName="slot" 
+              [ngClass]="{ 'is-invalid': submitted && f['slot'].errors }">
+              <mat-option value="{{slot.id}}:{{slot.timing}}" *ngFor="let slot of slots">{{slot.timing}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="submitted && f['slot'].errors">
+              <div *ngIf="f['slot'].errors['required']">Slot is required</div>
+  
+            </mat-error>
+          </mat-form-field>
+
+
+
+
+          <div><p>{{bookFacilityMessage}}</p>
+            <p> {{bookFacilityErrorMessage}}</p></div>
+          </div>
+          <button mat-raised-button color="primary" class="card-content-button">Submit</button>
+  
+        </form>
+      </mat-card-content>
+  
+    </mat-card>
+  </div>

@@ -1,0 +1,143 @@
+<app-header></app-header>
+
+
+<div class="example-card" >
+    <mat-card style="text-align: center;">
+      <mat-card-header>
+        Player Details [{{playerid}}]
+           
+      </mat-card-header>
+      <mat-card-content style="padding:15px">
+  
+        <form [formGroup]="updateForm" (submit)="onSubmit()">
+            <div>
+                <input type='hidden' formControlName="playerId" class='form-control'  />
+                  
+
+              </div>  
+          <div class="example-container">
+            <input type=hidden  formControlName="playerId" >
+            <!-- <input type=hidden  formControlName="stateId" > -->
+            <mat-form-field appearance="fill" class="card-content" style="background-color: rgba(82, 81, 81, 0.067);">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="firstName" readonly 
+                [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }"  style="float:left; width:80%">
+                <mat-error *ngIf="submitted && f['firstName'].errors">
+                  <div *ngIf="f['firstName'].errors['required']">First Name is required</div>
+                </mat-error>
+            </mat-form-field>
+  
+            <mat-form-field appearance="fill" class="card-content" style="background-color: rgba(82, 81, 81, 0.067);">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lastName" readonly
+              [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }"  style="float:left; width:80%">
+              <mat-error *ngIf="submitted && f['lastName'].errors">
+                <div *ngIf="f['lastName'].errors['required']">Last Name is required</div>
+              
+              </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="fill" class="card-content" >
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="pat@example.com" formControlName="email" required
+                [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"  style="float:left; width:80%">
+                <span class="material-icons" style="font-size: 15px; float:left; width:20%; cursor: pointer">edit</span>
+              <mat-error *ngIf="submitted && f['email'].errors">
+               
+                <div *ngIf="f['email'].errors['required']">Email is required</div>
+                
+              </mat-error>
+            </mat-form-field>
+          </div>
+  
+          <div class="example-container">
+  
+            <mat-form-field appearance="fill" class="card-content" >
+              <mat-label>PAN</mat-label>
+              <input matInput formControlName="pan" required
+              [ngClass]="{ 'is-invalid': submitted && f['pan'].errors }"  style="float:left; width:80%">
+              <span class="material-icons" style="font-size: 15px; float:left; width:20%; cursor: pointer">edit</span>
+
+              <mat-error *ngIf="submitted && f['pan'].errors">
+                <div *ngIf="f['pan'].errors['required']">PAN is required</div>
+      
+              </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="fill" class="card-content" style="background-color: rgba(82, 81, 81, 0.067);">
+              <mat-label>Age</mat-label>
+              <input matInput formControlName="age" readonly
+              [ngClass]="{ 'is-invalid': submitted && f['age'].errors }"  style="float:left; width:80%">
+              <mat-error *ngIf="submitted && f['age'].errors">
+                <div *ngIf="f['age'].errors['required']">Age is required</div>
+             
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="card-content" >
+                <mat-label>Contact</mat-label>
+                <input matInput type="number" formControlName="contact" required
+                [ngClass]="{ 'is-invalid': submitted && f['contact'].errors }"  style="float:left; width:80%">
+                <span class="material-icons" style="font-size: 15px; float:left; width:20%; cursor: pointer">edit</span>
+                <mat-error *ngIf="submitted && f['contact'].errors">
+                  <div *ngIf="f['contact'].errors['required']">Contact is required</div>
+                
+                </mat-error>
+              </mat-form-field>
+              
+            
+          </div>
+  
+          <div class="example-container">
+
+  
+            <mat-form-field appearance="fill" class="card-content" formGroupName="address" >
+              <mat-label>Address</mat-label>
+              <input matInput formControlName="homeAddress" required
+                [ngClass]="{ 'is-invalid': submitted && f1['homeAddress'].errors}"  style="float:left; width:80%">
+                <span class="material-icons" style="font-size: 15px; float:left; width:20%; cursor: pointer">edit</span>
+                <mat-error *ngIf="submitted && f1['homeAddress'].errors">
+                  
+                  <div *ngIf="f1['homeAddress'].errors['required']">Address is required</div>
+                 
+                </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="fill" class="card-content" formGroupName="address" style="background-color: rgba(82, 81, 81, 0.067);">
+              <mat-label>Country</mat-label>
+              <input matInput formControlName="country" readonly
+              [ngClass]="{ 'is-invalid': submitted && f1['country'].errors}"  style="float:left; width:80%">
+              <mat-error *ngIf="submitted && f1['country'].errors">
+                <div *ngIf="f1['country'].errors['required']">Country is required</div>
+    
+              </mat-error>
+            </mat-form-field>
+            
+              <mat-form-field appearance="fill" class="card-content" formGroupName="address" >
+                <mat-label>State</mat-label>
+                <mat-select formControlName="state"
+                [ngClass]="{ 'is-invalid': submitted && f1['state'].errors }" style="float:left; width:80%">
+                  <mat-option   [value]="state.id"  *ngFor="let state of states" >{{state.name}}</mat-option>
+    
+                </mat-select>
+                <span class="material-icons" style="font-size: 15px; float:left; width:20%; cursor: pointer">edit</span>
+                <mat-error *ngIf="submitted && f1['state'].errors">
+                  <div *ngIf="f1['state'].errors['required']">State is required</div>
+                 
+                </mat-error>
+               
+              </mat-form-field>
+</div>
+
+
+ 
+          <div><p>{{updateMessage}}</p>
+            <p> {{updationErrorMessage}}</p></div> 
+          
+          <button mat-raised-button color="primary" class="card-content">Update</button>
+  
+        </form>
+      </mat-card-content>
+  
+    </mat-card>
+  </div>

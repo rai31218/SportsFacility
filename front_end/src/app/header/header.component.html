@@ -1,0 +1,36 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport
+        [attr.role]="(isHandset$ ) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ ) ? 'over' : 'side'"
+        [opened]="(isHandset$) === false">
+      <mat-toolbar>Menu</mat-toolbar>
+      <mat-nav-list>
+        <a mat-list-item href="facilities">Facilities</a>
+        <a mat-list-item href="mybooking">My Bookings</a>
+        <a mat-list-item href="myprofile">My Profile</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ && userLoggedIn ">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span>Sports Facility</span>
+        <span class="spacer"></span>
+        <a  href="signin" style="color: white;" *ngIf="!userLoggedIn">Sign In</a> &nbsp;  &nbsp;
+        <a  href="signup" style="color: white;" *ngIf="!userLoggedIn">Sign Up</a>
+        <p  style="color: white; font-style: italic;" *ngIf="userLoggedIn">Hi, {{userName}}</p>  
+        &nbsp;  &nbsp;
+        <p><a mat-list-item href="#"  (click)="logout()" style="color: white;" *ngIf="userLoggedIn">Log Out</a></p>
+      </mat-toolbar>
+      <!-- Add Content Here -->
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+  
+  

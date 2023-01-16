@@ -1,0 +1,47 @@
+
+<!-- <mat-card style="text-align: center;">
+    <mat-card-content style="padding:15px">
+     -->
+     <app-header></app-header>
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="sport">
+    <mat-header-cell *matHeaderCellDef class="firstheader"> Sport </mat-header-cell>
+    <mat-cell *matCellDef="let element" class="firstcontent"> {{element.name}} </mat-cell>
+  </ng-container>
+
+  <!-- Facility Column -->
+  <ng-container matColumnDef="facility">
+    <mat-header-cell *matHeaderCellDef> Facility </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.facility}} </mat-cell>
+  </ng-container>
+
+  <!-- Availabity Column -->
+  <ng-container matColumnDef="generalAvailability">
+    <mat-header-cell *matHeaderCellDef> General Availability </mat-header-cell>
+    <mat-cell *matCellDef="let element, let i='index'"> {{element.initialAvailability}} </mat-cell>
+  </ng-container>
+
+   <!-- Symbol Column -->
+   <ng-container matColumnDef="action">
+    <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+    <mat-cell *matCellDef="let element"> <button mat-raised-button color="primary" (click)="bookfacility(element.id)">Book</button> </mat-cell>
+  </ng-container>
+  
+  
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+
+
+
+
+
+<!-- </mat-card-content>
+
+
+
+</mat-card> -->
