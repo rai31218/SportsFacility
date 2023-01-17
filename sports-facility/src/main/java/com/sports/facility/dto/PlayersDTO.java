@@ -12,7 +12,7 @@ public class PlayersDTO {
 	private Date dob;
 	private String password;
 	private String email;
-	private String pan;
+	//private String pan;
 	private boolean active;
 	private int age;
 	private Address address;
@@ -23,7 +23,7 @@ public class PlayersDTO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public PlayersDTO(String id, String firstName, String lasttName, Date dob, String password, String email, String pan,
+	public PlayersDTO(String id, String firstName, String lasttName, Date dob, String password, String email,
 			boolean active, int age, Address address, long contact, Date registeredDate) {
 		super();
 		this.id = id;
@@ -32,7 +32,7 @@ public class PlayersDTO {
 		this.dob = dob;
 		this.password = password;
 		this.email = email;
-		this.pan = pan;
+		//this.pan = pan;
 		this.active = active;
 		this.age = age;
 		this.address = address;
@@ -87,12 +87,12 @@ public class PlayersDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPan() {
-		return pan;
-	}
-	public void setPan(String pan) {
-		this.pan = pan;
-	}
+//	public String getPan() {
+//		return pan;
+//	}
+//	public void setPan(String pan) {
+//		this.pan = pan;
+//	}
 	public boolean isActive() {
 		return active;
 	}

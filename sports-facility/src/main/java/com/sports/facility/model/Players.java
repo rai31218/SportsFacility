@@ -29,7 +29,7 @@ public class Players {
 	private String lastName;
 	
 	@NotNull(message = "DOB is mandatory")
-	//@ValidDate
+	@ValidDate
 	private Date dob;
 	
 	@NotBlank
@@ -37,14 +37,14 @@ public class Players {
 	private String password;
 	
 	@NotBlank
-	@Email(message="Email format is invalid")
-	@Pattern(regexp=".+@.+\\..+", message="Please provide a valid email address")
+	//@Email(message="Email format is invalid")
+	@Pattern(regexp=".+.+@.+\\..+", message="Please provide a valid email address")
 	private String email;
 	
-	@NotBlank(message="PAN number is mandatory")
-	@Pattern(regexp="^[a-zA-Z0-9\s]*$")
-	private String pan;
-	
+//	@NotBlank(message="PAN number is mandatory")
+//	@Pattern(regexp="^[a-zA-Z0-9\s]*$")
+//	private String pan;
+//	
 	
 	private boolean active;
 	private int age;
@@ -62,7 +62,7 @@ public class Players {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Players(String id, String firstName, String lasttName, Date dob, String password, String email, String pan,
+	public Players(String id, String firstName, String lasttName, Date dob, String password, String email,
 			boolean active, int age, Address address, long contact, Date registeredDate) {
 		super();
 		this.id = id;
@@ -71,7 +71,7 @@ public class Players {
 		this.dob = dob;
 		this.password = password;
 		this.email = email;
-		this.pan = pan;
+		//this.pan = pan;
 		this.active = active;
 		this.age = age;
 		this.address = address;
@@ -126,12 +126,12 @@ public class Players {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPan() {
-		return pan;
-	}
-	public void setPan(String pan) {
-		this.pan = pan;
-	}
+//	public String getPan() {
+//		return pan;
+//	}
+//	public void setPan(String pan) {
+//		this.pan = pan;
+//	}
 	public boolean isActive() {
 		return active;
 	}

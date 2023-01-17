@@ -36,7 +36,7 @@ import com.sports.facility.service.CountryService;
 import com.sports.facility.service.PlayersService;
 
 @RestController
-@CrossOrigin(origins = { "http://localhost:4200", "https://digitalbook-frontend.s3.amazonaws.com" })
+@CrossOrigin(origins = { "http://localhost:4200", "https://sports-facility-bucket1.s3.amazonaws.com" })
 @RequestMapping(value = "/sports")
 public class PlayersController {
 
@@ -65,9 +65,9 @@ public class PlayersController {
 				return ResponseEntity.badRequest()
 						.body(new MessageResponse("Player with same email id already exists!"));
 			}
-//		else if (age < 18) {
-//			return ResponseEntity.badRequest().body(new MessageResponse("Age must be greater than 18!"));
-//		} 
+		else if (age < 18) {
+			return ResponseEntity.badRequest().body(new MessageResponse("Age must be greater than 18!"));
+		} 
 			else {
 				String savedId = playersService.saveUser(player);
 				return ResponseEntity.status(HttpStatus.CREATED)
@@ -77,7 +77,7 @@ public class PlayersController {
 		} catch (Exception e) {
 
 			return ResponseEntity.badRequest()
-					.body(new MessageResponse("Something went wrong!!! Please try again with proper input"));
+					.body(new MessageResponse(e.getMessage()));
 
 		}
 

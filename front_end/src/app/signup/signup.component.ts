@@ -61,7 +61,7 @@ export class SignupComponent implements OnInit {
       lastName: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(8)]],
       email: ['', Validators.required],
-      pan: ['', Validators.required],
+     // pan: ['', Validators.required],
       dob:  ['', Validators.required],
       contact:  ['', Validators.required],
       address: this.formBuilder.group({
@@ -99,7 +99,7 @@ export class SignupComponent implements OnInit {
         homeAddress: this.f1['homeAddress'].value,
         country: new Country(this.f1['country'].value)
       },
-      pan: this.f['pan'].value,
+     // pan: this.f['pan'].value,
       contact: this.f['contact'].value
     };
 

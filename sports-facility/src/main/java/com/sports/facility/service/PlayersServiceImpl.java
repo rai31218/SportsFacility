@@ -76,7 +76,7 @@ public class PlayersServiceImpl implements PlayersService {
 		player.setDob(playerdto.getDob());
 		player.setFirstName(playerdto.getFirstName());
 		player.setLastName(playerdto.getLastName());
-		player.setPan(playerdto.getPan());
+		//player.setPan(playerdto.getPan());
 		Players savedPlayer = playerRepository.save(player);
 		return savedPlayer.getId();
 		}
@@ -107,7 +107,7 @@ public class PlayersServiceImpl implements PlayersService {
 			address.get().setState(playerdto.getAddress().getState());
 			address.get().setHomeAddress(playerdto.getAddress().getHomeAddress());
 			currentPlayer.get().setEmail(playerdto.getEmail());
-			currentPlayer.get().setPan(playerdto.getPan());
+			//currentPlayer.get().setPan(playerdto.getPan());
 			currentPlayer.get().setContact(playerdto.getContact());
 			
 			addressRepository.save(address.get());

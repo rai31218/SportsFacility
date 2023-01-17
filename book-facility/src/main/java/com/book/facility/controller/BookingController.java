@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,18 +42,12 @@ public class BookingController {
 	@PostMapping("/bookfacility")
 	public ResponseEntity<?> bookFacility(@RequestBody BookingDetails bookingDetails) {
 		try {
-//			Optional<Players> player = playerService.findByPlayerId(bookingDetails.getPlayer().getId());
-//
-//			if (player.isPresent()) {
 			ResponseEntity<?> response = bookingDetailsService.bookFacility(bookingDetails);
 			return response;
-//			} else {
-//				return ResponseEntity.badRequest().body(new MessageResponse("Not a valid Player Id"));
-//			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new MessageResponse("Something went wrong!"));
 		}
-		return null;
+		
 	}
 
 	@GetMapping("/getfacilities")

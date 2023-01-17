@@ -89,7 +89,7 @@ export class BookingComponent implements OnInit {
       lastName: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(8)]],
       email: ['', Validators.required],
-      pan: ['', Validators.required],
+     // pan: ['', Validators.required],
       age:  ['', Validators.required],
       contact:  ['', Validators.required],
       address: this.formBuilder.group({
@@ -125,7 +125,7 @@ export class BookingComponent implements OnInit {
           firstName: this.playerDetails.firstName,
           lastName: this.playerDetails.lastName,
           email: this.playerDetails.email,
-          pan: this.playerDetails.pan,
+         // pan: this.playerDetails.pan,
           age: this.playerDetails.age,
           contact: this.playerDetails.contact,
           address: this.formBuilder.group({

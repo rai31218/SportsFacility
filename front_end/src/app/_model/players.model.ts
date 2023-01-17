@@ -7,7 +7,7 @@ export class Players{
 	public dob?:string;
 	public password?:string;
 	public email?:string;
-	public pan?:string;
+	//public pan?:string;
 	public active?:boolean;
 	public age?:number;
 	public address?:Address;

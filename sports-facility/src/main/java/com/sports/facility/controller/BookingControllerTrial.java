@@ -31,8 +31,8 @@ import com.sports.facility.response.MessageResponse;
 
 import com.sports.facility.service.PlayersService;
 
+@CrossOrigin(origins = { "http://localhost:4200", "https://sports-facility-bucket1.s3.amazonaws.com" })
 @RestController
-@CrossOrigin(origins = { "http://localhost:4200", "https://digitalbook-frontend.s3.amazonaws.com" })
 @RequestMapping(value = "/sports")
 public class BookingControllerTrial {
 

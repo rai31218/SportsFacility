@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="example-card">
   <mat-card style="text-align: center;">
     <mat-card-header>
@@ -53,14 +54,14 @@
             </mat-error>
           </mat-form-field>
 
-          <mat-form-field appearance="fill" class="card-content">
+          <!-- <mat-form-field appearance="fill" class="card-content">
             <mat-label>PAN</mat-label>
             <input matInput formControlName="pan" [ngClass]="{ 'is-invalid': submitted && f['pan'].errors }">
             <mat-error *ngIf="submitted && f['pan'].errors">
               <div *ngIf="f['pan'].errors['required']">PAN is required</div>
     
             </mat-error>
-          </mat-form-field>
+          </mat-form-field> -->
           
           <mat-form-field appearance="fill" class="card-content">
             <mat-label>Date of Birth</mat-label>
@@ -73,10 +74,8 @@
            
             </mat-error>
           </mat-form-field>
-          
-        </div>
 
-        <div class="example-container">
+
           <mat-form-field appearance="fill" class="card-content">
             <mat-label>Contact</mat-label>
             <input matInput type="number" formControlName="contact" [ngClass]="{ 'is-invalid': submitted && f['contact'].errors }">
@@ -85,6 +84,11 @@
             
             </mat-error>
           </mat-form-field>
+          
+        </div>
+
+        <div class="example-container">
+
           
 
           <mat-form-field appearance="fill" class="card-content" formGroupName="address">
@@ -108,10 +112,6 @@
   
             </mat-error>
           </mat-form-field>
-          
-        </div>
-
-        <div class="example-container">
 
           <mat-form-field appearance="fill" class="card-content" formGroupName="address">
             <mat-label>State</mat-label>
@@ -125,6 +125,12 @@
             </mat-error>
            
           </mat-form-field>
+          
+        </div>
+
+        <div class="example-container">
+
+
           <div><p>{{gotRegistrationMessage}}</p>
             <p> {{registrationErrorMessage}}</p></div>
 

@@ -29,13 +29,11 @@ export class HeaderComponent {
 
   constructor(private userService:UserService,
     private router:Router) {
-      console.log("Came in heder: "+this.currentUser )
+      console.log("Came in header: "+this.currentUser )
     
 
   }
-  ionViewDidEnter(){
-    console.log("entererd")
-  }
+
   ngOnInit(){
     console.log("Came in heder ngoninit: "+this.currentUser )
     this.currentUser = this.userService.currentUserValue;

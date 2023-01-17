@@ -79,7 +79,7 @@
   
           <div class="example-container">
   
-            <mat-form-field appearance="fill" class="card-content" style="background-color: rgba(98, 96, 96, 0.067);">
+            <!-- <mat-form-field appearance="fill" class="card-content" style="background-color: rgba(98, 96, 96, 0.067);">
               <mat-label>PAN</mat-label>
               <input matInput formControlName="pan" readonly
               [ngClass]="{ 'is-invalid': submitted && f['pan'].errors }">
@@ -87,7 +87,7 @@
                 <div *ngIf="f['pan'].errors['required']">PAN is required</div>
       
               </mat-error>
-            </mat-form-field>
+            </mat-form-field> -->
             
             <mat-form-field appearance="fill" class="card-content" style="background-color: rgba(82, 81, 81, 0.067);">
               <mat-label>Age</mat-label>
@@ -110,20 +110,21 @@
               </mat-form-field>
               
             
+              <mat-form-field appearance="fill" class="card-content" formGroupName="address" style="background-color: rgba(82, 81, 81, 0.067);">
+                <mat-label>Address</mat-label>
+                <input matInput formControlName="homeAddress" readonly
+                  [ngClass]="{ 'is-invalid': submitted && f1['homeAddress'].errors}">
+                  <mat-error *ngIf="submitted && f1['homeAddress'].errors">
+                    <div *ngIf="f1['homeAddress'].errors['required']">Address is required</div>
+                   
+                  </mat-error>
+              </mat-form-field>
           </div>
   
           <div class="example-container">
 
   
-            <mat-form-field appearance="fill" class="card-content" formGroupName="address" style="background-color: rgba(82, 81, 81, 0.067);">
-              <mat-label>Address</mat-label>
-              <input matInput formControlName="homeAddress" readonly
-                [ngClass]="{ 'is-invalid': submitted && f1['homeAddress'].errors}">
-                <mat-error *ngIf="submitted && f1['homeAddress'].errors">
-                  <div *ngIf="f1['homeAddress'].errors['required']">Address is required</div>
-                 
-                </mat-error>
-            </mat-form-field>
+
             
             <mat-form-field appearance="fill" class="card-content" formGroupName="address" style="background-color: rgba(82, 81, 81, 0.067);">
               <mat-label>Country</mat-label>
@@ -145,23 +146,23 @@
                 </mat-error>
                
               </mat-form-field>
-
+              <mat-form-field appearance="fill" class="card-content" >
+                <mat-label>Facility</mat-label>
+                <mat-select formControlName="facility" 
+                  [ngClass]="{ 'is-invalid': submitted && f['facility'].errors }" #facility>
+                  <mat-option [value]="facility.id"  *ngFor="let facility of facilityList">{{facility.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="submitted && f['facility'].errors">
+                  <div *ngIf="f['facility'].errors['required']">Facility is required</div>
+                  <!-- value="{{facility.id}}-{{facility.name}}" -->
+                </mat-error>
+              </mat-form-field>
 
 
               
           </div>
 
-          <mat-form-field appearance="fill" class="card-content" >
-            <mat-label>Facility</mat-label>
-            <mat-select formControlName="facility" 
-              [ngClass]="{ 'is-invalid': submitted && f['facility'].errors }" #facility>
-              <mat-option [value]="facility.id"  *ngFor="let facility of facilityList">{{facility.name}}</mat-option>
-            </mat-select>
-            <mat-error *ngIf="submitted && f['facility'].errors">
-              <div *ngIf="f['facility'].errors['required']">Facility is required</div>
-              <!-- value="{{facility.id}}-{{facility.name}}" -->
-            </mat-error>
-          </mat-form-field>
+
 
           <div class="example-container">
           <mat-form-field appearance="fill" class="card-content" >

@@ -77,7 +77,7 @@ export class MyprofileComponent implements OnInit {
           firstName: this.playerDetails.firstName,
           lastName: this.playerDetails.lastName,
           email: [this.playerDetails.email, Validators.required],
-          pan: [this.playerDetails.pan, Validators.required],
+          //pan: [this.playerDetails.pan, Validators.required],
           age: this.playerDetails.age,
           contact: this.playerDetails.contact,
           address: this.formBuilder.group({
@@ -111,7 +111,7 @@ export class MyprofileComponent implements OnInit {
         homeAddress: this.f1['homeAddress'].value,
         
       },
-      pan: this.f['pan'].value,
+    //  pan: this.f['pan'].value,
       contact: this.f['contact'].value
     };
 

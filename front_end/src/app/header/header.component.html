@@ -5,9 +5,9 @@
         [opened]="(isHandset$) === false">
       <mat-toolbar>Menu</mat-toolbar>
       <mat-nav-list>
-        <a mat-list-item href="facilities">Facilities</a>
-        <a mat-list-item href="mybooking">My Bookings</a>
-        <a mat-list-item href="myprofile">My Profile</a>
+        <a mat-list-item routerLink="/facilities" >Facilities</a>
+        <a mat-list-item routerLink="/mybooking" >My Bookings</a>
+        <a mat-list-item routerLink="/myprofile">My Profile</a>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
@@ -22,8 +22,8 @@
         </button>
         <span>Sports Facility</span>
         <span class="spacer"></span>
-        <a  href="signin" style="color: white;" *ngIf="!userLoggedIn">Sign In</a> &nbsp;  &nbsp;
-        <a  href="signup" style="color: white;" *ngIf="!userLoggedIn">Sign Up</a>
+        <a  routerLink="/signin"  style="color: white;" *ngIf="!userLoggedIn">Sign In</a> &nbsp;  &nbsp;
+        <a  routerLink="/signup"  style="color: white;" *ngIf="!userLoggedIn">Sign Up</a>
         <p  style="color: white; font-style: italic;" *ngIf="userLoggedIn">Hi, {{userName}}</p>  
         &nbsp;  &nbsp;
         <p><a mat-list-item href="#"  (click)="logout()" style="color: white;" *ngIf="userLoggedIn">Log Out</a></p>
