@@ -50,6 +50,11 @@ public class TimeSlots {
 		TimeSlots other = (TimeSlots) obj;
 		return id == other.id && Objects.equals(timing, other.timing);
 	}
+	@Override
+	public String toString() {
+		return "TimeSlots [id=" + id + ", timing=" + timing + "]";
+	}
+	
 	
 	
 }

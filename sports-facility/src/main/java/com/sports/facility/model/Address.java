@@ -2,8 +2,6 @@ package com.sports.facility.model;
 
 import java.util.List;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Transient;
 
 import org.springframework.data.annotation.Id;
@@ -17,7 +15,6 @@ public class Address {
 	public static final String SEQUENCE_NAME = "address_sequence";
 	
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String homeAddress;
 	

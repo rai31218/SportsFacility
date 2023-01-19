@@ -1,12 +1,10 @@
 package com.sports.facility.controller;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.TimeZone;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,10 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.sports.facility.dto.AvailabilityDTO;
+
 import com.sports.facility.dto.BookingDetailsDTO;
 import com.sports.facility.dto.FacilitiesDTO;
-import com.sports.facility.dto.TimeSlotList;
 import com.sports.facility.dto.TimeSlotsDTO;
 import com.sports.facility.model.Players;
 
@@ -36,8 +33,6 @@ import com.sports.facility.service.PlayersService;
 @RequestMapping(value = "/sports")
 public class BookingControllerTrial {
 
-//	@Autowired
-//	BookingDetailsService bookingDetailsService;
 
 	@Autowired
 	PlayersService playerService;

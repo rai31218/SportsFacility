@@ -167,7 +167,7 @@
           <div class="example-container">
           <mat-form-field appearance="fill" class="card-content" >
             <mat-label>Booking Date</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="bookingDate" 
+            <input matInput [matDatepicker]="picker" formControlName="bookingDate" required
               [ngClass]="{ 'is-invalid': submitted && f['bookingDate'].errors }" (dateChange)="onDateChange()">
             <mat-datepicker-toggle matIconSuffix [for]="picker" ></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
@@ -180,7 +180,7 @@
           <mat-form-field appearance="fill" class="card-content" >
             <mat-label>Slot</mat-label>
             <mat-select formControlName="slot" 
-              [ngClass]="{ 'is-invalid': submitted && f['slot'].errors }">
+              [ngClass]="{ 'is-invalid': submitted && f['slot'].errors }"  required>
               <mat-option value="{{slot.id}}:{{slot.timing}}" *ngFor="let slot of slots">{{slot.timing}}</mat-option>
             </mat-select>
             <mat-error *ngIf="submitted && f['slot'].errors">

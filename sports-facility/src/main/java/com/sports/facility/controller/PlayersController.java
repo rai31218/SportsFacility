@@ -1,9 +1,6 @@
 package com.sports.facility.controller;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.ZoneId;
+
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletResponse;
@@ -55,9 +52,8 @@ public class PlayersController {
 	public ResponseEntity<?> signUp(@RequestBody PlayersDTO player) {
 		try {
 
-			LocalDate localDate = Instant.ofEpochMilli(player.getDob().getTime()).atZone(ZoneId.systemDefault())
-					.toLocalDate();
-			int age = Period.between(localDate, LocalDate.now()).getYears();
+
+			int age = playersService.calculateAge(player.getDob().getTime());
 
 			Players duplicateUser = playersService.duplicateUserNameAndEmail(player.getEmail());
 
@@ -68,6 +64,10 @@ public class PlayersController {
 		else if (age < 18) {
 			return ResponseEntity.badRequest().body(new MessageResponse("Age must be greater than 18!"));
 		} 
+			
+		else if(String.valueOf(player.getContact()).length()>10 || String.valueOf(player.getContact()).length()<10  ) {
+			return ResponseEntity.badRequest().body(new MessageResponse("contact: Phonenumber must be of 10 digit!"));
+		}
 			else {
 				String savedId = playersService.saveUser(player);
 				return ResponseEntity.status(HttpStatus.CREATED)

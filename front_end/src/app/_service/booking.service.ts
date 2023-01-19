@@ -12,6 +12,7 @@ import { JwtResponse } from '../_model/jwtResponse.model';
 
 const commonUrl="https://sdbiene5j8.execute-api.ap-northeast-1.amazonaws.com/UAT/";
 //const commonUrl = "http://54.168.238.113:8081/sports/";
+//const commonUrl="http://localhost:8081/sports/";
 
 const slotUrl = commonUrl
 const bookFacilityUrl=commonUrl+"bookfacility";

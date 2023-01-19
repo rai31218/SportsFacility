@@ -48,35 +48,13 @@ public class BookingDetailsServiceImpl implements BookingDetailsService {
 		List<TimeSlots> timeSlots = checkAvailability(bookingDetails.getFacility(), bookingDetails.getBookingDate(),
 				bookingDetails.getBookingSlot());
 		if (!timeSlots.contains(bookingDetails.getBookingSlot())) {
-			System.out.println("Lets see the date: "+ bookingDetails.getBookingDate());
+			System.out.println("Lets see the date: " + bookingDetails.getBookingDate());
 			return ResponseEntity.status(HttpStatus.OK)
-					//badRequest()
+					// badRequest()
 					.body(new MessageResponse("Facility not available for this slot"));
 		}
 
 		else {
-			//bookingDetails.getBookingDate().toInstant().
-//			
-//			SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-//
-//			SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss+ss");
-//
-//			String date12 = outputFormat.format(bookingDetails.getBookingDate());
-//			
-//			SimpleDateFormat inputFormat1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss+ss");
-//			
-//			try {
-//				Date date123;
-//				date123 = inputFormat1.parse(date12.replace('"', ' '));
-//				bookingDetails.setBookingDate(date123);
-//			} catch (ParseException e) {
-//				
-//				e.printStackTrace();
-//			}
-			
-			
-			
-			System.out.println("Lets see the date: "+ bookingDetails.getBookingDate());
 			String bookingId = bookingDetailsRepository.save(bookingDetails).getId();
 			return ResponseEntity.ok()
 					.body(new MessageResponse("Facility has been booked for you with booking Id: " + bookingId));
@@ -87,34 +65,30 @@ public class BookingDetailsServiceImpl implements BookingDetailsService {
 	@Override
 	public List<TimeSlots> checkAvailability(Facilities facility, Date bookingDate, TimeSlots timeSlot) {
 
-		List<BookingDetails> bookingDetais = bookingDetailsRepository.findByFacilityAndBookingDateAndBookingSlot(facility,
-				bookingDate,timeSlot);
+		List<BookingDetails> bookingDetais = bookingDetailsRepository
+				.findByFacilityAndBookingDateAndBookingSlot(facility, bookingDate, timeSlot);
 		List<TimeSlots> timeslots = timeSlotRepository.findAll();
 		List<String> checkSameList = new ArrayList<String>();
-
-		// to check for same date, same slot, same facility name
 		for (BookingDetails bookingDetail : bookingDetais) {
 			String checkSame = bookingDetail.getFacility().getName() + " " + bookingDetail.getBookingDate() + " "
 					+ bookingDetail.getBookingSlot();
 			checkSameList.add(checkSame);
 		}
 
-		if (facility.getId()==1 && checkSameList.size() == 2) {
-			// remove timslot from timeslot list
-			boolean removed =timeslots.remove(bookingDetais.get(0).getBookingSlot());
-			System.out.println("remvd: "+removed);
+		if (facility.getId() == 1 && checkSameList.size() == 2) {
+			timeslots.remove(bookingDetais.get(0).getBookingSlot());
+
 		}
-		if (facility.getId()==2 && checkSameList.size() == 1) {
+		if (facility.getId() == 2 && checkSameList.size() == 1) {
 			timeslots.remove(bookingDetais.get(0).getBookingSlot());
 		}
 
-		if (facility.getId()==3 && checkSameList.size() == 3) {
+		if (facility.getId() == 3 && checkSameList.size() == 3) {
 			timeslots.remove(bookingDetais.get(0).getBookingSlot());
 		}
 		return timeslots;
 	}
 
-	
 	@Override
 	public List<TimeSlots> checkAvailabilityForListingScehdule(Facilities facility, Date bookingDate) {
 
@@ -123,46 +97,44 @@ public class BookingDetailsServiceImpl implements BookingDetailsService {
 		List<TimeSlots> timeslots = timeSlotRepository.findAll();
 		List<TimeSlots> checkSameList = new ArrayList<TimeSlots>();
 
-		// to check for same date, same slot, same facility name
 		for (BookingDetails bookingDetail : bookingDetais) {
 			TimeSlots checkSame = bookingDetail.getBookingSlot();
 			checkSameList.add(checkSame);
-			
+
 		}
 
-		if (facility.getId()==1 && checkSameList.size() >= 2) {
+		if (facility.getId() == 1 && checkSameList.size() >= 2) {
 
-			for(TimeSlots ts : timeslots) {
-				if(Collections.frequency(checkSameList, ts)>=2) {
-					boolean removed =timeslots.remove(ts);
+			for (TimeSlots ts : timeslots) {
+				if (Collections.frequency(checkSameList, ts) >= 2) {
+					timeslots.remove(ts);
 					break;
 				}
 			}
-			
-			
 
 		}
-		if (facility.getId()==2 && checkSameList.size() >= 1) {
+		if (facility.getId() == 2 && checkSameList.size() >= 1) {
 
-			for(TimeSlots ts : timeslots) {
-				if(Collections.frequency(checkSameList, ts)>=1) {
-					boolean removed =timeslots.remove(ts);
+			for (TimeSlots ts : timeslots) {
+				if (Collections.frequency(checkSameList, ts) >= 1) {
+					timeslots.remove(ts);
 					break;
 				}
 			}
 		}
 
-		if (facility.getId()==3 && checkSameList.size() >= 3) {
+		if (facility.getId() == 3 && checkSameList.size() >= 3) {
 
-			for(TimeSlots ts : timeslots) {
-				if(Collections.frequency(checkSameList, ts)>=3) {
-					boolean removed =timeslots.remove(ts);
+			for (TimeSlots ts : timeslots) {
+				if (Collections.frequency(checkSameList, ts) >= 3) {
+					timeslots.remove(ts);
 					break;
 				}
 			}
 		}
 		return timeslots;
 	}
+
 	public int generateSequence(String seqName) {
 
 		DatabaseSequence counter = mongoOperations.findAndModify(query(where("_id").is(seqName)),
@@ -182,10 +154,9 @@ public class BookingDetailsServiceImpl implements BookingDetailsService {
 		PlayersDTO player = new PlayersDTO();
 		player.setId(playerId);
 		List<BookingDetails> bookingList = bookingDetailsRepository.findByPlayer(player);
-		
-		
+
 		return bookingList;
-		
+
 	}
 
 }

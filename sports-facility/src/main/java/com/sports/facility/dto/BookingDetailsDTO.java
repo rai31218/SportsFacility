@@ -1,32 +1,22 @@
 package com.sports.facility.dto;
 
 import java.util.Date;
-import java.util.Objects;
 
-import javax.persistence.Transient;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import com.sports.facility.model.Players;
 
-//@Document(collection = "bookingDetails")
+
 public class BookingDetailsDTO {
-	//@Transient
-	//public static final String SEQUENCE_NAME = "booking_details_sequence";
-	//@Id
+
     private String id;
 	
-	//@DocumentReference(lazy=true)
+
 	private Players player;
 	
 	private Date bookingDate;
-	
-	//@DocumentReference(lazy=false)
+
 	private TimeSlotsDTO bookingSlot;
-	
-	//@DocumentReference(lazy=true)
+
 	private FacilitiesDTO facility;
 	
 	
@@ -34,7 +24,7 @@ public class BookingDetailsDTO {
 	
 	public BookingDetailsDTO() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public BookingDetailsDTO(String id, Players player, Date bookingDate, TimeSlotsDTO bookingSlot, FacilitiesDTO facilityName) {
@@ -85,25 +75,6 @@ public class BookingDetailsDTO {
 				+ bookingSlot+ ", facility=" + facility + "]";
 	}
 
-//	@Override
-//	public int hashCode() {
-//		return Objects.hash(bookingDate, bookingSlot, facility, id, player);
-//	}
-//
-//	@Override
-//	public boolean equals(Object obj) {
-//		if (this == obj)
-//			return true;
-//		if (obj == null)
-//			return false;
-//		if (getClass() != obj.getClass())
-//			return false;
-//		BookingDetails other = (BookingDetails) obj;
-//		return Objects.equals(bookingDate, other.bookingDate) && Objects.equals(bookingSlot, other.bookingSlot)
-//				&& Objects.equals(facility, other.facility) && Objects.equals(id, other.id)
-//				&& Objects.equals(player, other.player);
-//	}
-//	
 	
 	
 }

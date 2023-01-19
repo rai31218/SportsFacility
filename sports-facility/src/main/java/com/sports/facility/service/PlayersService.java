@@ -1,6 +1,5 @@
 package com.sports.facility.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -20,6 +19,8 @@ public interface PlayersService {
 	Players updatePlayerDetails(PlayersDTO player, String playerId);
 
 	Optional<Players> getDetails(String playerId);
+
+	int calculateAge(long time);
 
 	
 	

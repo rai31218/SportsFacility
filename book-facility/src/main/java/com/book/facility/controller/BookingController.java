@@ -3,6 +3,7 @@ package com.book.facility.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
@@ -16,10 +17,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.book.facility.dto.PlayersDTO;
 import com.book.facility.model.BookingDetails;
 import com.book.facility.model.Facilities;
 import com.book.facility.model.TimeSlots;
@@ -35,9 +34,6 @@ public class BookingController {
 
 	@Autowired
 	BookingDetailsService bookingDetailsService;
-
-//	@Autowired
-//	PlayersService playerService;
 
 	@PostMapping("/bookfacility")
 	public ResponseEntity<?> bookFacility(@RequestBody BookingDetails bookingDetails) {
@@ -61,9 +57,7 @@ public class BookingController {
 	public List<TimeSlots> availableSchedule(@PathVariable("facilityId") String facilityId,
 			@PathVariable("facilityName") String facilityName,
 			@PathVariable("date") String date) throws ParseException {
-		//Date date1=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS z").parse(date.replace('"', ' ')); 
-		
-		
+		try {
 		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
 		SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss+ss");
@@ -77,10 +71,15 @@ public class BookingController {
 
 		
 		AvailabilityDTO avilabilitycheck = new AvailabilityDTO(date123, new Facilities(Integer.parseInt(facilityId), facilityName));
-		List<TimeSlots> timeSlotList = bookingDetailsService
-				.checkAvailabilityForListingScehdule(((AvailabilityDTO) avilabilitycheck).getFacility(), ((AvailabilityDTO) avilabilitycheck).getDate());
+		List<TimeSlots> timeSlotList = new ArrayList<TimeSlots>();
+		timeSlotList = bookingDetailsService
+				.checkAvailabilityForListingScehdule(avilabilitycheck.getFacility(),  avilabilitycheck.getDate());
 
 		return timeSlotList;
+		}
+		catch (Exception e) {
+			return null;
+		}
 
 	}
 	

@@ -12,7 +12,6 @@ public class State {
 
 	public State() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public State(int id, String name) {

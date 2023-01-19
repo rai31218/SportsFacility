@@ -134,7 +134,7 @@ export class BookingComponent implements OnInit {
             country: this.playerDetails.address.country.name
           }),
           playerId: this.playerDetails.id,
-          bookingDate:null,
+          bookingDate: null,
           facility:this.facilityId,
           slot: null
      })
@@ -145,7 +145,13 @@ export class BookingComponent implements OnInit {
   }
   
   public onSubmit(){
-  //  console.log("Facility Id: "+ this.f['facility'].value.split("-")[0]+" "+this.f['facility'].value.split("-")[1])
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.bookingForm.invalid) {
+      return;
+    }
+    console.log(this.f['slot'].value)
     const formData: BookingDetails = {
       player: new Players( this.f['playerId'].value),
       bookingDate: this.f['bookingDate'].value,
@@ -160,6 +166,8 @@ export class BookingComponent implements OnInit {
       error:(err)=>{console.log(err)
       this.bookFacilityErrorMessage=err}
     })
+
+
 
   }
 

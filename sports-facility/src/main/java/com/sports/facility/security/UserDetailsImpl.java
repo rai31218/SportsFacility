@@ -30,11 +30,6 @@ public class UserDetailsImpl implements UserDetails {
 	}
 
 	public static UserDetailsImpl build(Players player) {
-//		List<GrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority(user.getRoles().getRoleName()));
-//				user.getRoles().stream()
-//				.map(role -> new SimpleGrantedAuthority(role.getName().name()))
-//				.collect(Collectors.toList());
-
 		return new UserDetailsImpl(
 				player.getId(),  
 				player.getEmail(),

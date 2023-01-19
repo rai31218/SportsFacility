@@ -2,18 +2,15 @@ package com.sports.facility.dto;
 
 import java.util.Objects;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-//@Document(collection = "timeslot")
 public class TimeSlotsDTO {
 	
-	//@Id
+
 	private int id;
 	private String timing;
 	public TimeSlotsDTO() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 	public TimeSlotsDTO(int id, String slot) {
 		super();

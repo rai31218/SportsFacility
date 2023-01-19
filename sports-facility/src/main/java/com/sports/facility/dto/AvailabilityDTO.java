@@ -9,7 +9,6 @@ public class AvailabilityDTO {
 	private FacilitiesDTO facility;
 	public AvailabilityDTO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public AvailabilityDTO(Date date, FacilitiesDTO facility) {
 		super();
