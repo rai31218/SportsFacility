@@ -40,7 +40,7 @@ public class BookingControllerTrial {
 	@Autowired
 	RestTemplate restTemplate;
 	
-	String bookingFacilityUrl = "http://localhost:8082/sports/";
+	String bookingFacilityUrl = "http://book-facility:8082/sports/";
 
 	@PostMapping("/bookfacility")
 	public ResponseEntity<?> bookFacility(@RequestBody BookingDetailsDTO bookingDetails) {

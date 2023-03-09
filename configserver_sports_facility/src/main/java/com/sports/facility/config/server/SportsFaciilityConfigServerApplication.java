@@ -10,6 +10,7 @@ public class SportsFaciilityConfigServerApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SportsFaciilityConfigServerApplication.class, args);
+		System.out.println("Config server Running".toUpperCase());
 	}
 
 }

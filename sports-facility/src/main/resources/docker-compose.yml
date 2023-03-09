@@ -1,0 +1,61 @@
+version : "3"
+services:
+  config-server:
+    image: config-server
+    container_name: config-server
+    ports:
+      - 8888:8888  
+    volumes:
+      - /host/tmp:/tmp config-server
+
+  service-registry:
+    depends_on:
+      - config-server
+    image: service-registry
+    container_name: service-registry
+    ports: 
+      - 8761:8761
+  sports-facility-db:
+    depends_on:
+      - config-server
+    image: mongo:latest
+    container_name: sports-facility-db
+    ports:
+      - 27017:27017
+    links:
+      - config-server  
+  book-facility-db:
+    depends_on:
+      - config-server
+    image: mongo:latest
+    container_name: book-facility-db
+    ports:
+      - 27018:27017
+#    command: ["mongod"]
+  book-facility:
+     image: book-facility
+     container_name: book-facility 
+     ports:
+       - 8082:8080 
+     links:
+      - config-server 
+      - service-registry 
+      - book-facility-db 
+       
+  sports-facility:
+    depends_on:
+      - config-server
+      - service-registry 
+      - sports-facility-db
+    image: sports-facility
+    container_name: sports-facility  
+    ports:
+      - 8081:8080
+       
+    links:
+      - config-server 
+      - service-registry
+      - sports-facility-db
+      - book-facility
+      
+             

@@ -1,6 +1,7 @@
 package com.sports.facility.controller;
 
 
+import java.util.Date;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletResponse;
@@ -52,14 +53,21 @@ public class PlayersController {
 	public ResponseEntity<?> signUp(@RequestBody PlayersDTO player) {
 		try {
 
-
-			int age = playersService.calculateAge(player.getDob().getTime());
+           
+			int age = 0;
+			
+			Optional<Date> check= Optional.ofNullable(player.getDob());
+			if( check.isPresent()) {
+				
+				age = 	playersService.calculateAge(player.getDob().getTime());
+			}
+				
 
 			Players duplicateUser = playersService.duplicateUserNameAndEmail(player.getEmail());
 
 			if (duplicateUser != null) {
 				return ResponseEntity.badRequest()
-						.body(new MessageResponse("Player with same email id already exists!"));
+						.body(new MessageResponse("Player with same email id already exists!!!!!!"));
 			}
 		else if (age < 18) {
 			return ResponseEntity.badRequest().body(new MessageResponse("Age must be greater than 18!"));

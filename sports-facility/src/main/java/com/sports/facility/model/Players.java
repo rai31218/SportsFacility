@@ -24,8 +24,8 @@ public class Players {
 	@NotBlank
 	private String lastName;
 
-	@NotNull(message = "DOB is mandatory")
-	@ValidDate
+//	@NotNull(message = "DOB is mandatory")
+//	@ValidDate
 	private Date dob;
 
 	@NotBlank
@@ -42,7 +42,7 @@ public class Players {
 	@DocumentReference(lazy = true)
 	private Address address;
 
-	@Pattern(regexp = "\\d{10}", message = "Phone number should be of atleast 10 digits")
+	//@Pattern(regexp = "\\d{10}", message = "Phone number should be of atleast 10 digits")
 	private String contact;
 	private Date registeredDate;
 
