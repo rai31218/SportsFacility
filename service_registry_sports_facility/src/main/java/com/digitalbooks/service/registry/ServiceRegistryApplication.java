@@ -10,6 +10,8 @@ public class ServiceRegistryApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ServiceRegistryApplication.class, args);
+		String myStr = "Hello planet earth, you are a great planet.";
+		System.out.println(myStr.indexOf("e", 5));
 	}
 
 }
