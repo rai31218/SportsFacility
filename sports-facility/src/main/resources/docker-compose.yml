@@ -33,11 +33,15 @@ services:
       - 27018:27017
 #    command: ["mongod"]
   book-facility:
-     image: book-facility
-     container_name: book-facility 
-     ports:
+    depends_on:
+      - config-server
+      - service-registry 
+      - book-facility-db
+    image: book-facility
+    container_name: book-facility 
+    ports:
        - 8082:8080 
-     links:
+    links:
       - config-server 
       - service-registry 
       - book-facility-db 
