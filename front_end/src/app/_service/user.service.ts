@@ -6,8 +6,8 @@ import { map } from 'rxjs/operators';
 import { Players } from '../_model/players.model';
 import { Address } from '../_model/address.model';
 
-const commonUrl="https://sdbiene5j8.execute-api.ap-northeast-1.amazonaws.com/UAT/";
-//onst commonUrl="http://localhost:8081/sports/";
+//const commonUrl="https://sdbiene5j8.execute-api.ap-northeast-1.amazonaws.com/UAT/";
+const commonUrl="http://localhost:8081/sports/";
 //const commonUrl="http://54.168.238.113:8081/sports/"
 
 const url = commonUrl+"sign-up";
